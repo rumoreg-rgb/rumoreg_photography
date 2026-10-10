@@ -3,208 +3,580 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RUMOREG Photography</title>
-  <meta name="description" content="Portfolio fotográfico de RUMOREG Photography. Proyectos personales, retrato y fotografía conceptual.">
+
+  <title>Rumoreg Photography | Fotografía de autor</title>
+  <meta name="description" content="Portfolio de fotografía artística y proyectos de autor de Rumoreg Photography.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --paper: #f6f4ef;
+      --ink: #24231f;
+      --muted: #77736b;
+      --line: #dcd8cf;
+      --accent: #9a4938;
+    }
+
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background: #f5f2ed;
-      color: #242321;
-      font-family: Arial, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .wrap {
+      width: min(1180px, 88%);
+      margin: auto;
     }
 
     header {
-      padding: 32px 7%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 24px;
-      border-bottom: 1px solid #d8d2c9;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
     }
 
     .logo {
-      font-size: 22px;
-      letter-spacing: 4px;
+      font-size: 14px;
       font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     nav {
       display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 25px;
     }
 
-    nav a {
-      color: inherit;
-      text-decoration: none;
-      font-size: 13px;
+    nav a, .language button {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 100px 7% 80px;
+    nav a:hover, .text-link:hover {
+      color: var(--accent);
     }
 
-    .intro {
-      max-width: 650px;
-      margin-bottom: 70px;
+    .language {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .language button {
+      padding: 4px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .language button.active {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .hero {
+      padding: 85px 0 65px;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 7%;
+      align-items: center;
     }
 
     .eyebrow {
-      font-size: 11px;
-      letter-spacing: 3px;
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      color: #777067;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 400;
     }
 
     h1 {
-      font-size: clamp(42px, 8vw, 86px);
-      line-height: 1.05;
-      font-weight: 400;
-      letter-spacing: -3px;
-      margin: 24px 0;
+      margin: 22px 0;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1.06;
+      letter-spacing: -.045em;
     }
 
-    .intro p {
-      font-size: 17px;
-      line-height: 1.8;
-      color: #625e57;
+    h1 em, h2 em {
+      color: var(--accent);
+      font-weight: 400;
     }
 
-    h2 {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 3px;
+    .intro {
+      max-width: 410px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .text-link {
+      display: inline-block;
+      margin-top: 24px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--ink);
+      font-size: 11px;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      margin-bottom: 28px;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      display: block;
+      width: 100%;
+      height: 530px;
+      object-fit: cover;
+    }
+
+    .image-note {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding-top: 10px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .06em;
+    }
+
+    .section {
+      padding: 75px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2, .about h2 {
+      margin: 8px 0 0;
+      font-size: clamp(34px, 4vw, 49px);
+      line-height: 1.15;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px 28px;
     }
 
-    .project {
-      min-height: 190px;
-      padding: 28px;
-      background: #e7e0d6;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+    .project:nth-child(even) {
+      margin-top: 75px;
     }
 
-    .project:nth-child(2) {
-      background: #dedbd3;
+    .project-image {
+      display: block;
+      overflow: hidden;
+      background: #e7e2d9;
     }
 
-    .project:nth-child(3) {
-      background: #e1d8d0;
+    .project-image img {
+      display: block;
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      transition: transform .6s ease;
     }
 
-    .project:nth-child(4) {
-      background: #d9d8d1;
+    .project-image:hover img {
+      transform: scale(1.025);
+    }
+
+    .project-number {
+      margin-top: 17px;
+      color: var(--accent);
+      font-size: 10px;
+      letter-spacing: .12em;
     }
 
     .project h3 {
-      font-size: 22px;
-      font-weight: 400;
-      margin: 0 0 8px;
+      margin: 3px 0;
+      font-size: 28px;
     }
 
     .project p {
-      margin: 0;
-      color: #625e57;
-      font-size: 13px;
+      margin: 3px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: .85fr 1fr;
+      gap: 10%;
+      align-items: center;
+    }
+
+    .about-image img {
+      display: block;
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .about-copy p {
+      max-width: 480px;
+      color: var(--muted);
+    }
+
+    .contact {
+      padding: 85px 0;
+      text-align: center;
+      background: #eae6de;
+    }
+
+    .contact h2 {
+      margin: 12px 0;
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.15;
+    }
+
+    .contact p {
+      color: var(--muted);
     }
 
     footer {
-      padding: 30px 7%;
-      border-top: 1px solid #d8d2c9;
-      font-size: 12px;
-      color: #777067;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .04em;
     }
 
-    @media (max-width: 600px) {
-      header {
-        align-items: flex-start;
-        flex-direction: column;
+    @media (max-width: 700px) {
+      .wrap {
+        width: 90%;
       }
 
-      main {
-        padding-top: 65px;
+      header {
+        flex-wrap: wrap;
+        padding: 20px 0;
+      }
+
+      nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 10px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 55px 0 45px;
+        gap: 35px;
+      }
+
+      .hero-image img {
+        height: 390px;
+      }
+
+      .section {
+        padding: 55px 0;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 5px;
       }
 
       .projects {
         grid-template-columns: 1fr;
+        gap: 38px;
       }
 
-      h1 {
-        letter-spacing: -1.5px;
+      .project:nth-child(even) {
+        margin-top: 0;
+      }
+
+      .project-image img {
+        height: 390px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-image img {
+        height: 350px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 5px;
       }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="logo">RUMOREG</div>
-    <nav>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="#inicio">Rumoreg Photography</a>
 
-  <main>
-    <section class="intro">
-      <div class="eyebrow">Fotografía de autora · Málaga</div>
-      <h1>RUMOREG<br>Photography</h1>
-      <p>
-        Proyectos personales, retrato y fotografía conceptual.
-        Imágenes que parten de historias, gestos y experiencias.
-      </p>
-    </section>
+      <nav aria-label="Navegación principal">
+        <a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
+        <a href="#sobre-mi" data-es="Sobre mí" data-en="About me">Sobre mí</a>
+        <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+      </nav>
 
-    <section id="proyectos">
-      <h2>Proyectos seleccionados</h2>
-      <div class="projects">
-        <article class="project">
-          <h3>Lenguaje del abanico</h3>
-          <p>Gesto, memoria y cultura visual.</p>
-        </article>
-        <article class="project">
-          <h3>Cartografía de un naufragio</h3>
-          <p>Una serie sobre la experiencia de sobrevivir.</p>
-        </article>
-        <article class="project">
-          <h3>Las Sinsombrero</h3>
-          <p>Una propuesta fotográfica sobre las mujeres de la Generación del 27.</p>
-        </article>
-        <article class="project">
-          <h3>Emociones</h3>
-          <p>Fotografía conceptual.</p>
-        </article>
+      <div class="language" aria-label="Seleccionar idioma">
+        <button type="button" class="active" data-lang="es" aria-pressed="true">ES</button>
+        <span>/</span>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
-    </section>
+    </header>
 
-    <section id="sobre-mi" style="padding-top: 70px;">
-      <h2>Sobre mí</h2>
-      <p>Fotografía, proyectos personales e investigación visual.</p>
-    </section>
+    <main>
+      <section class="hero" id="inicio">
+        <div>
+          <span class="eyebrow"
+            data-es="Fotografía de autor · Andalucía"
+            data-en="Fine art photography · Andalusia">
+            Fotografía de autor · Andalucía
+          </span>
 
-    <section id="contacto" style="padding-top: 30px;">
-      <h2>Contacto</h2>
-      <p>Próximamente encontrarás aquí mis datos de contacto.</p>
-    </section>
-  </main>
+          <h1 data-es="Imágenes que dejan una <em>huella.</em>"
+              data-en="Images that leave a <em>trace.</em>">
+            Imágenes que dejan una <em>huella.</em>
+          </h1>
 
-  <footer>
-    © RUMOREG Photography
-  </footer>
+          <p class="intro"
+            data-es="Un espacio para explorar historias, emociones y símbolos a través de la fotografía."
+            data-en="A space to explore stories, emotions and symbols through photography.">
+            Un espacio para explorar historias, emociones y símbolos a través de la fotografía.
+          </p>
+
+          <a class="text-link" href="#proyectos"
+            data-es="Explorar proyectos ↘"
+            data-en="Explore projects ↘">
+            Explorar proyectos ↘
+          </a>
+        </div>
+
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1200&q=85"
+            alt="Imagen artística de una instalación expositiva">
+          <div class="image-note">
+            <span data-es="Una mirada personal" data-en="A personal perspective">Una mirada personal</span>
+            <span>01 / 04</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="proyectos">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow" data-es="Selección" data-en="Selected work">Selección</span>
+            <h2 data-es="Proyectos <em>personales</em>"
+                data-en="Personal <em>projects</em>">
+              Proyectos <em>personales</em>
+            </h2>
+          </div>
+          <p data-es="Series fotográficas · 01—03"
+             data-en="Photography series · 01—03">
+            Series fotográficas · 01—03
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <a class="project-image" href="#contacto">
+              <img
+                src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1000&q=85"
+                alt="Paisaje de tonos suaves al amanecer"
+                loading="lazy">
+            </a>
+            <div class="project-number">01 / SERIE</div>
+            <h3>Cartografía de un naufragio</h3>
+            <p data-es="Supervivencia · Transformación"
+               data-en="Survival · Transformation">
+              Supervivencia · Transformación
+            </p>
+          </article>
+
+          <article class="project">
+            <a class="project-image" href="#contacto">
+              <img
+                src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=85"
+                alt="Detalle floral de inspiración artística"
+                loading="lazy">
+            </a>
+            <div class="project-number">02 / SERIE</div>
+            <h3>Lenguaje del abanico</h3>
+            <p data-es="Gesto · Memoria · Símbolo"
+               data-en="Gesture · Memory · Symbol">
+              Gesto · Memoria · Símbolo
+            </p>
+          </article>
+
+          <article class="project">
+            <a class="project-image" href="#contacto">
+              <img
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=85"
+                alt="Retrato de moda de estilo editorial"
+                loading="lazy">
+            </a>
+            <div class="project-number">03 / SERIE</div>
+            <h3 data-es="Retratos" data-en="Portraits">Retratos</h3>
+            <p data-es="Identidad · Emoción · Mirada"
+               data-en="Identity · Emotion · Gaze">
+              Identidad · Emoción · Mirada
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section about" id="sobre-mi">
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=1000&q=85"
+            alt="Paisaje natural de atmósfera serena"
+            loading="lazy">
+        </div>
+
+        <div class="about-copy">
+          <span class="eyebrow" data-es="Detrás de la cámara" data-en="Behind the camera">
+            Detrás de la cámara
+          </span>
+
+          <h2 data-es="Fotografiar para <em>sentir.</em>"
+              data-en="Photography to <em>feel.</em>">
+            Fotografiar para <em>sentir.</em>
+          </h2>
+
+          <p
+            data-es="Mi trabajo nace de la curiosidad por las emociones, los símbolos y las historias que habitan en las imágenes. Me interesa crear fotografías que despierten algo en quien las mira y permitan que cada persona encuentre su propia interpretación."
+            data-en="My work grows from a curiosity about emotions, symbols and the stories held within images. I aim to create photographs that stir something in the viewer and leave room for each person to find their own interpretation.">
+            Mi trabajo nace de la curiosidad por las emociones, los símbolos y las historias que habitan en las imágenes. Me interesa crear fotografías que despierten algo en quien las mira y permitan que cada persona encuentre su propia interpretación.
+          </p>
+
+          <a class="text-link" href="#contacto"
+            data-es="Hablemos ↗" data-en="Get in touch ↗">
+            Hablemos ↗
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <span class="eyebrow" data-es="Contacto y colaboraciones"
+        data-en="Contact and collaborations">
+        Contacto y colaboraciones
+      </span>
+
+      <h2 class="serif"
+        data-es="¿Creamos algo juntos?"
+        data-en="Shall we create something together?">
+        ¿Creamos algo juntos?
+      </h2>
+
+      <p
+        data-es="Para proyectos, exposiciones y colaboraciones fotográficas."
+        data-en="For photography projects, exhibitions and collaborations.">
+        Para proyectos, exposiciones y colaboraciones fotográficas.
+      </p>
+
+      <a class="text-link" href="mailto:TU-CORREO-AQUI"
+        data-es="Escríbeme ↗" data-en="Write to me ↗">
+        Escríbeme ↗
+      </a>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer>
+      <span>© <span id="year"></span> Rumoreg Photography</span>
+      <span data-es="Fotografía de autor · Andalucía"
+        data-en="Fine art photography · Andalusia">
+        Fotografía de autor · Andalucía
+      </span>
+    </footer>
+  </div>
+
+  <script>
+    const languageButtons = document.querySelectorAll("[data-lang]");
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-es][data-en]").forEach(element => {
+        element.innerHTML = element.dataset[lang];
+      });
+
+      languageButtons.forEach(button => {
+        const selected = button.dataset.lang === lang;
+        button.classList.toggle("active", selected);
+        button.setAttribute("aria-pressed", selected);
+      });
+
+      document.title = lang === "es"
+        ? "Rumoreg Photography | Fotografía de autor"
+        : "Rumoreg Photography | Fine Art Photography";
+    }
+
+    languageButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.lang);
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 </body>
-</html>
+</html>  
