@@ -116,5 +116,55 @@
     <img src="images/images/autorretrato%20(33).jpg" alt="Autorretrato 33">
   </div>
 
+<div id="visor" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); z-index:9999; align-items:center; justify-content:center;">
+  <button id="cerrar" aria-label="Cerrar" style="position:absolute; top:20px; right:25px; color:white; background:none; border:0; font-size:38px; cursor:pointer;">&times;</button>
+  <button id="anterior" aria-label="Fotografía anterior" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:white; background:none; border:0; font-size:42px; cursor:pointer;">&#8249;</button>
+  <img id="foto-ampliada" src="" alt="" style="max-width:86%; max-height:86vh; object-fit:contain;">
+  <button id="siguiente" aria-label="Fotografía siguiente" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); color:white; background:none; border:0; font-size:42px; cursor:pointer;">&#8250;</button>
+  <span id="contador" style="position:absolute; bottom:18px; color:#ccc; font-size:14px;"></span>
+</div>
+
+<script>
+  const fotos = Array.from(document.querySelectorAll('.gallery img'));
+  const visor = document.getElementById('visor');
+  const fotoAmpliada = document.getElementById('foto-ampliada');
+  const contador = document.getElementById('contador');
+  let indice = 0;
+
+  function mostrarFoto(n) {
+    indice = (n + fotos.length) % fotos.length;
+    fotoAmpliada.src = fotos[indice].src;
+    fotoAmpliada.alt = fotos[indice].alt;
+    contador.textContent = (indice + 1) + ' / ' + fotos.length;
+    visor.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  fotos.forEach((foto, i) => {
+    foto.style.cursor = 'zoom-in';
+    foto.addEventListener('click', () => mostrarFoto(i));
+  });
+
+  document.getElementById('cerrar').addEventListener('click', cerrarVisor);
+  document.getElementById('anterior').addEventListener('click', () => mostrarFoto(indice - 1));
+  document.getElementById('siguiente').addEventListener('click', () => mostrarFoto(indice + 1));
+
+  function cerrarVisor() {
+    visor.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  visor.addEventListener('click', (e) => {
+    if (e.target === visor) cerrarVisor();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (visor.style.display !== 'flex') return;
+    if (e.key === 'Escape') cerrarVisor();
+    if (e.key === 'ArrowLeft') mostrarFoto(indice - 1);
+    if (e.key === 'ArrowRight') mostrarFoto(indice + 1);
+  });
+</script>
+
 </body>
 </html>
